@@ -4,6 +4,7 @@
     <router-link to="/">Home</router-link> |
     <!-- Data binding the to attribute and passing in the object with the name property is more scalable because if in the future we change the path name to something else we won't have to change the hard coded path throughtout the rest of the website -->
     <router-link :to="{ name: 'about' }">About</router-link>
+    <router-link :to="{ name: 'jobs' }">Jobs</router-link>
   </nav>
   <!-- This is where Vue Router will inject the component based on its route -->
   <router-view />
