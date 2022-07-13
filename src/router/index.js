@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Jobs from "../views/Jobs/Jobs.vue";
+import JobDetails from "../views/Jobs/JobDetails.vue";
 
 const routes = [
   {
@@ -18,6 +19,12 @@ const routes = [
     path: "/jobs",
     name: "jobs",
     component: Jobs,
+  },
+  {
+    // the :id is a so-called route parameter and it is used for the dynamic purposes
+    path: "/jobs/:id",
+    name: "JobDetails",
+    component: JobDetails,
   },
 ];
 
