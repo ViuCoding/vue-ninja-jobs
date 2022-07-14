@@ -14,12 +14,18 @@
 export default {
   data() {
     return {
-      jobs: [
-        { title: "Ninja UX Designer", id: 1, details: "lorem" },
-        { title: "Ninja Web Developer", id: 2, details: "lorem" },
-        { title: "Ninja Vue Developer", id: 3, details: "lorem" },
-      ],
+      // We gonna fetch the data using API calls and the populate the data array with it.
+      jobs: [],
     };
+  },
+
+  // The mounted() life cycle hooks is where we usually make API calls
+  mounted() {
+    // fetch returns a promise, so we attach a .then, we pass in the request and turn it into a JS object with .json(). After that we simply set the empty array to be the result of the data request this.jobs (empty array) = data (which is the returned data array)
+    fetch("http://localhost:3000/jobs")
+      .then((res) => res.json())
+      .then((data) => (this.jobs = data))
+      .catch((err) => console.log(err.message));
   },
 };
 </script>
