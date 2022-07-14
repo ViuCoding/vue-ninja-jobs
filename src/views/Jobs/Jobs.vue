@@ -1,13 +1,20 @@
 <template>
   <h1>Jobs</h1>
-  <div v-for="job in jobs" :key="job.id" class="job">
-    <!-- Data binding :to so we can pass an object, name for the name of the page and params to pass the Route Parameter (:id) -->
-    <router-link :to="{ name: 'JobDetails', params: { id: job.id } }">
-      <h2>
-        {{ job.title }}
-      </h2>
-    </router-link>
+
+  <!-- In this case we check for jobs.length instead of simply jobs because jobs has a value, even though is an empty array, hence would result in a truthy value.
+  If we use .length we make sure that the array is actually populated -->
+  <div v-if="jobs.length">
+    <div v-for="job in jobs" :key="job.id" class="job">
+      <!-- Data binding :to so we can pass an object, name for the name of the page and params to pass the Route Parameter (:id) -->
+      <router-link :to="{ name: 'JobDetails', params: { id: job.id } }">
+        <h2>
+          {{ job.title }}
+        </h2>
+      </router-link>
+    </div>
   </div>
+
+  <div v-else><p>Loading Jobs...</p></div>
 </template>
 
 <script>
